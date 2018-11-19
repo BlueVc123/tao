@@ -1,0 +1,13 @@
+html,body{
+  width: 100%;
+  height: 100%;
+  background-color: RGB(34,45,50);
+}
+.box{
+  height: 100%;
+  padding-top: 200px;
+}
+.box .panel .panel-heading h3{
+  text-align: center;
+  line-height: 50px;
+}
