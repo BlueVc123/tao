@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
+  <link rel="stylesheet" href="./css/comment.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="box">
+    <div class="left">
+      <div class="title">黑马30期</div>
+      <div class="pic">
+        <img src="./images/default.png" alt="">
+        <p>超级管理员</p>
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a  href="./user.html"><i class="glyphicon glyphicon-user"></i><span>用户管理</span></a></li>
+          <li>
+            <a href="javascript:;" id="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
+            <ul>
+                <li><a class="second " href="./one.html"><span>一级分类</span></a></li>
+                <li><a class="second active" href="./tow.html"><span>二级分类</span></a></li>
+            </ul>
+          </li>
+          <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <div class="top">
+        <a href="#" class="pull-left icon_left"><i class="glyphicon glyphicon-align-justify"></i></a>
+        <a href="#" class="pull-right icon_right"><i class="glyphicon glyphicon-log-out"></i></a>
+      </div>
+      <div>
+          <ol class="breadcrumb">
+              <li><a href="#">系统管理</a></li>
+              <li>分类管理</li>
+              <li>二级分类</li>
+          </ol>
+      </div>
+      <div class="table-Box">
+        <button class="btn btn-default" id="addCate">添加分类</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>一级分类名称</th>
+              <th>二级分类名称</th>
+              <th>二级分类LOGO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>一</td>
+              <td>波特兰</td>
+              <td>摩达中心</td>
+              <td><img src="./images/none.png" alt=""></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 分页栏 -->
+        <div class="text-right">
+          <ul id="pagintor">
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- 退出的模态框 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+              <p><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="clear_btn">退出</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- 添加的模态框 -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <form id="form">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加分类</h4>
+                  </div>
+                  <div class="modal-body">
+                    <!-- 一级下拉菜单 -->
+                    <div class="form-group">
+                      <!-- 下拉菜单 -->
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              <span id="selectOne">请选择一级分类</span>
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                              <li><a href="#">呼啦啦</a></li>
+                            </ul>
+                           
+                        </div>
+                        <input type="hidden" name="categoryId">
+                        <input type="hidden" name="hot" value="1">
+                    </div>    
+                    <!-- 二级标签输入框 -->
+                    <div class="form-group" style="margin-top:20px ; margin-bottom:20px ">
+                        <input type="text" name="brandName" class="form-control" id="exampleInputEmail1" placeholder="请输入二级分类">
+                    </div>
+                    <!-- 图片的按钮 -->
+                    <div class="form-group">
+                        <label for="fileupload" class="btn btn-default">添加图片</label>
+                        <!--
+                          name: 用于后台接收文件
+                          data-url: 指定后台的接口地址
+                        -->
+                        <input type="file" id="fileupload" name="pic1" data-url="/category/addSecondCategoryPic" style="display: none;">
+                    </div>
+                    <!-- 图片的上传 -->
+                    <div class="form-group">
+                       <input type="hidden" name="brandLogo" >
+                      <!-- 图片展示 -->
+                      <div>
+                          <img src="./images/none.png" id="img" style="width: 100px; height: 100px; margin-top: 20px" alt="">
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" id="add_btn">添加</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- table栏的模板 -->
+  <script type="text/html" id="tmp">
+    {{each rows v i}}
+    <tr>
+      <td>{{(page-1)*size+i+1}}</td>
+      <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td><img src={{v.brandLogo}} alt=""></td>
+    </tr>
+    {{/each}}
+  </script>
+  <!-- 一级分类的模板 -->
+  <script type="text/html" id="addtmp">
+    {{each rows v i}}
+    <li data-id="{{v.id}}"><a href="#">{{v.categoryName}}</a></li>
+    {{/each}}
+  </script>
+  <script src="./lib/jquery/jquery.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.js"></script>
+  <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+  <script src="./js/isLogin.js"></script>
+  <script src="./js/comment.js"></script>
+  <script src="./js/two.js"></script>
+</body>
+</html>
